@@ -10,6 +10,7 @@ cursor.execute("""
     SELECT name
     FROM sqlite_master
     WHERE type = 'table'
+    ORDER BY name
 """)
 
 for table in cursor.fetchall():
@@ -20,6 +21,7 @@ print("\nСОХРАНЁННЫЕ ЗАДАЧИ:")
 cursor.execute("""
     SELECT id, user_id, title, category, deadline, is_completed
     FROM tasks
+    ORDER BY id
 """)
 
 tasks = cursor.fetchall()

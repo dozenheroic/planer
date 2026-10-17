@@ -1,13 +1,13 @@
 
 import sqlite3
 
+DATABASE = "tasks.db"
+
 
 def create_database():
-    connection = sqlite3.connect("tasks.db")
+    connection = sqlite3.connect(DATABASE)
 
-    cursor = connection.cursor()
-
-    cursor.execute("""
+    connection.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL UNIQUE,
@@ -16,7 +16,7 @@ def create_database():
         )
     """)
 
-    cursor.execute("""
+    connection.execute("""
         CREATE TABLE IF NOT EXISTS tasks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER NOT NULL,
@@ -33,7 +33,7 @@ def create_database():
     connection.commit()
     connection.close()
 
-    print("база данных успешно создана")
+    print("База данных успешно проверена и подготовлена")
 
 
 if __name__ == "__main__":

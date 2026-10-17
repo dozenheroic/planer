@@ -1,7 +1,6 @@
-
 import sqlite3
 from flask import Flask, jsonify, request, redirect, render_template_string
-
+from database import create_database
 app = Flask(__name__)
 DATABASE = "tasks.db"
 
@@ -503,4 +502,5 @@ def list_tasks():
 
 
 if __name__ == "__main__":
+    create_database()
     app.run(debug=True)
